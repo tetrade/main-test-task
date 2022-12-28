@@ -1,4 +1,6 @@
-package entitys;
+package com.spring.rest.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,9 +25,9 @@ public class CounterpartyOrganization {
     @Column(name="inn")
     private String inn;
 
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
-    private List<ContractCounterparties> contracts;
+    private List<CounterpartyContract> contracts;
 
     public CounterpartyOrganization() {
     }
@@ -38,7 +40,7 @@ public class CounterpartyOrganization {
 
     @Override
     public String toString() {
-        return "entitys.CounterpartyOrganization{" +
+        return "CounterpartyOrganization{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", inn=" + inn +
@@ -53,17 +55,17 @@ public class CounterpartyOrganization {
         this.address = address;
     }
 
-    public List<ContractCounterparties> getContracts() {
+    public List<CounterpartyContract> getContracts() {
         return contracts;
     }
 
-    public void addContract(ContractCounterparties contract){
+    public void addContract(CounterpartyContract contract){
         if (contracts == null) {
-            contracts = new ArrayList<>();
+            contracts = new ArrayList();
         }
         contracts.add(contract);
     }
-    public void setContracts(List<ContractCounterparties> organizations) {
+    public void setContracts(List<CounterpartyContract> organizations) {
         this.contracts = organizations;
     }
 

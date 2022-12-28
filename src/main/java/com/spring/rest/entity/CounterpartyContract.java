@@ -1,11 +1,11 @@
-package entitys;
+package com.spring.rest.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 @Table(name = "counterparty_contracts")
 @Entity
-public class ContractCounterparties {
+public class CounterpartyContract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class ContractCounterparties {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "organization_id")
+    @JoinColumn(name = "counterparty_organization_id")
     private CounterpartyOrganization organization;
 
 
@@ -53,10 +53,10 @@ public class ContractCounterparties {
     @Column(name="planned_end")
     private Date planned_end;
 
-    public ContractCounterparties() {
+    public CounterpartyContract() {
     }
 
-    public ContractCounterparties(String name, String type, int amount, Date actual_start, Date actual_end, Date planned_start, Date planned_end) {
+    public CounterpartyContract(String name, String type, int amount, Date actual_start, Date actual_end, Date planned_start, Date planned_end) {
         this.name = name;
         this.type = type;
         this.amount = amount;
