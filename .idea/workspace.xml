@@ -9,9 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="608c48a2-d3f6-46ad-8a16-878e7bfaf705" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/sql_create.sql" afterDir="false" />
+    <list default="true" id="608c48a2-d3f6-46ad-8a16-878e7bfaf705" name="Changes" comment="new sql create">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/dao/ContractDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/dao/ContractStageDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/entity/Contract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/entity/ContractStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_create.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_create.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/rest/controller/MyRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/controller/MyRESTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/rest/entity/CounterpartyContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/entity/CounterpartyContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/rest/entity/CounterpartyOrganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/entity/CounterpartyOrganization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/rest/service/DBServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/service/DBServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spring/rest/service/DBSevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spring/rest/service/DBSevice.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,26 +65,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/piatl/IdeaProjects/rest_api_application/src/main/java/com/spring/rest/entity",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "fe7dcbb15a69db00f97fb260aa2e2f1d",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/piatl/IdeaProjects/rest_api_application/src/main/java/com/spring/rest/entity&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;fe7dcbb15a69db00f97fb260aa2e2f1d&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;GenericSQL&quot;,
+      &quot;Greenplum&quot;,
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\piatl\IdeaProjects\rest_api_application\src\main\java\com\spring\rest\entity" />
@@ -179,6 +194,9 @@
       <updated>1672051704535</updated>
       <workItem from="1672051705967" duration="13571000" />
       <workItem from="1672251526546" duration="2003000" />
+      <workItem from="1672833563513" duration="985000" />
+      <workItem from="1672962096017" duration="646000" />
+      <workItem from="1673015832042" duration="26844000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1672251659860</created>
@@ -187,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672251659860</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new sql create">
+      <created>1672833796706</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672833796706</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +220,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="new sql create" />
+    <option name="LAST_COMMIT_MESSAGE" value="new sql create" />
   </component>
 </project>

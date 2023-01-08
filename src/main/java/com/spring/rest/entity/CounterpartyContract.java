@@ -1,5 +1,8 @@
 package com.spring.rest.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -18,57 +21,64 @@ public class CounterpartyContract {
     @Column(name="type")
     private String type;
 
-    @Override
-    public String toString() {
-        return "ContractCounterparties{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", organization=" + organization +
-                ", amount=" + amount +
-                ", actual_start=" + actual_start +
-                ", actual_end=" + actual_end +
-                ", planned_start=" + planned_start +
-                ", planned_end=" + planned_end +
-                '}';
-    }
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "counterparty_organization_id")
     private CounterpartyOrganization organization;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="contract_id")
+    @JsonIgnore
+    private Contract contract2;
 
     @Column(name="amount")
     private int amount;
 
-    @Column(name="actual_start")
-    private Date actual_start;
+    @Column(name= "actual_start_date")
+    private Date actualStartDate;
 
-    @Column(name="actual_end")
-    private Date actual_end;
+    @Column(name= "actual_end_date")
+    private Date actualEndDate;
 
-    @Column(name="planned_start")
-    private Date planned_start;
+    @Column(name= "planned_start_date")
+    private Date plannedStartDate;
 
-    @Column(name="planned_end")
-    private Date planned_end;
+    @Column(name= "planned_end_date")
+    private Date plannedEndDate;
+
 
     public CounterpartyContract() {
     }
 
-    public CounterpartyContract(String name, String type, int amount, Date actual_start, Date actual_end, Date planned_start, Date planned_end) {
-        this.name = name;
-        this.type = type;
-        this.amount = amount;
-        this.actual_start = actual_start;
-        this.actual_end = actual_end;
-        this.planned_start = planned_start;
-        this.planned_end = planned_end;
+    public Contract getContract2() {
+        return contract2;
     }
 
-    public void setContractCounterparty(CounterpartyOrganization organization) {
+//    public void setContract2(Contract contract) {
+//        this.contract2 = contract;
+//        contract.addCounterpartyContract(this);
+//    }
+
+    public CounterpartyContract(int id, String name, String type, CounterpartyOrganization organization, Contract contract, int amount, Date actualStartDate, Date actualEndDate, Date plannedStartDate, Date plannedEndDate) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
         this.organization = organization;
-        organization.addContract(this);
+        this.contract2 = contract;
+        this.amount = amount;
+        this.actualStartDate = actualStartDate;
+        this.actualEndDate = actualEndDate;
+        this.plannedStartDate = plannedStartDate;
+        this.plannedEndDate = plannedEndDate;
+    }
+
+//    public void setCounterpartyOrganization(CounterpartyOrganization organization) {
+//        this.organization = organization;
+//        organization.addContract(this);
+//    }
+
+
+    public void setContract2(Contract contract2) {
+        this.contract2 = contract2;
     }
 
     public int getId() {
@@ -95,38 +105,6 @@ public class CounterpartyContract {
         this.type = type;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public Date getActual_start() {
-        return actual_start;
-    }
-
-    public void setActual_start(Date actual_start) {
-        this.actual_start = actual_start;
-    }
-
-    public Date getActual_end() {
-        return actual_end;
-    }
-
-    public void setActual_end(Date actual_end) {
-        this.actual_end = actual_end;
-    }
-
-    public Date getPlanned_start() {
-        return planned_start;
-    }
-
-    public void setPlanned_start(Date planned_start) {
-        this.planned_start = planned_start;
-    }
-
     public CounterpartyOrganization getOrganization() {
         return organization;
     }
@@ -135,11 +113,59 @@ public class CounterpartyContract {
         this.organization = organization;
     }
 
-    public Date getPlanned_end() {
-        return planned_end;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setPlanned_end(Date planned_end) {
-        this.planned_end = planned_end;
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Date getActualStartDate() {
+        return actualStartDate;
+    }
+
+    public void setActualStartDate(Date actualStartDate) {
+        this.actualStartDate = actualStartDate;
+    }
+
+    public Date getActualEndDate() {
+        return actualEndDate;
+    }
+
+    public void setActualEndDate(Date actualEndDate) {
+        this.actualEndDate = actualEndDate;
+    }
+
+    public Date getPlannedStartDate() {
+        return plannedStartDate;
+    }
+
+    public void setPlannedStartDate(Date plannedStartDate) {
+        this.plannedStartDate = plannedStartDate;
+    }
+
+    public Date getPlannedEndDate() {
+        return plannedEndDate;
+    }
+
+    public void setPlannedEndDate(Date plannedEndDate) {
+        this.plannedEndDate = plannedEndDate;
+    }
+
+    @Override
+    public String toString() {
+        return "CounterpartyContract{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", organization=" + organization +
+                ", contract=" + contract2 +
+                ", amount=" + amount +
+                ", actualStartDate=" + actualStartDate +
+                ", actualEndDate=" + actualEndDate +
+                ", plannedStartDate=" + plannedStartDate +
+                ", plannedEndDate=" + plannedEndDate +
+                '}';
     }
 }

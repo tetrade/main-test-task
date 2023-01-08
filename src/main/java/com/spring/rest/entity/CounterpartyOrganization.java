@@ -1,5 +1,6 @@
 package com.spring.rest.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -25,14 +26,15 @@ public class CounterpartyOrganization {
     @Column(name="inn")
     private String inn;
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
-    private List<CounterpartyContract> contracts;
+    @JsonIgnore
+    private List<CounterpartyContract> counterpartyContracts;
 
     public CounterpartyOrganization() {
     }
 
-    public CounterpartyOrganization(String name, String address, String inn) {
+    public CounterpartyOrganization(int id, String name, String address, String inn) {
+        this.id = id;
         this.address = address;
         this.name = name;
         this.inn = inn;
@@ -55,18 +57,18 @@ public class CounterpartyOrganization {
         this.address = address;
     }
 
-    public List<CounterpartyContract> getContracts() {
-        return contracts;
+    public List<CounterpartyContract> getCounterpartyContracts() {
+        return counterpartyContracts;
     }
 
     public void addContract(CounterpartyContract contract){
-        if (contracts == null) {
-            contracts = new ArrayList();
+        if (counterpartyContracts == null) {
+            counterpartyContracts = new ArrayList();
         }
-        contracts.add(contract);
+        counterpartyContracts.add(contract);
     }
-    public void setContracts(List<CounterpartyContract> organizations) {
-        this.contracts = organizations;
+    public void setCounterpartyContracts(List<CounterpartyContract> organizations) {
+        this.counterpartyContracts = organizations;
     }
 
     public int getId() {

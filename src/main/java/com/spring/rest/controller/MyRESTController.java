@@ -1,5 +1,7 @@
 package com.spring.rest.controller;
 
+import com.spring.rest.entity.Contract;
+import com.spring.rest.entity.ContractStage;
 import com.spring.rest.entity.CounterpartyContract;
 import com.spring.rest.entity.CounterpartyOrganization;
 import com.spring.rest.service.DBSevice;
@@ -29,4 +31,14 @@ public class MyRESTController {
         return allCounterpartyOrganization;
     }
 
+    @GetMapping("/contracts")
+    public List<Contract> showAllContracts() {
+        List<Contract> allContracts = dbSevice.getAllContracts();
+        return allContracts;
+    }
+
+    @GetMapping("/contracts_stages")
+    public List<ContractStage> showAllContractStages() {
+        return dbSevice.getAllContractsStages();
+    }
 }
